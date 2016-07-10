@@ -45,7 +45,7 @@ $(document).ready(function(){
   var renderPaginate = function(total, per, page){
     var offset = 3;
     var pagination = $("nav ul.pagination");
-    var totalPage = total / per + (total % per == 0 ? 0 : 1);
+    var totalPage = parseInt(total / per) + (total % per == 0 ? 0 : 1);
 
     var startPage, endPage;
     if(page + offset < totalPage && page - offset > 0) {
@@ -55,7 +55,7 @@ $(document).ready(function(){
       startPage = 1;
       endPage = (startPage + offset * 2) < totalPage ? startPage + offset * 2 : totalPage;
     } else {
-      startPage = totalPage - offset * 2;
+      startPage = (totalPage - offset * 2 < 1) ? 1 : totalPage - offset * 2;
       endPage = totalPage;
     }
 
