@@ -11,40 +11,63 @@
     <script src="js/listing.js"></script>
   </head>
   <body>
-    <form>
-      <div class="col-md-1"></div>
-      <div class="col-md-10">
-        <div class="form-group">
-          <label>名前</label>
-          <input type="text" name="name" class="search form-control" />
+    <div class="pull-left">
+      <a class="btn btn-primary" role="button" data-toggle="collapse" href="#searchOption" aria-expanded="false" aria-controls="searchOption">
+        Search Option
+      </a>
+    </div>
+    <div class="collapse" id="searchOption">
+      <form>
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+          <div class="form-group">
+            <label>名前</label>
+            <input type="text" name="name" class="search form-control" />
+          </div>
+          <div class="form-group">
+            <label>名前（カナ）</label>
+            <input type="text" name="name_kana" class="search form-control" />
+          </div>
+          <div class="form-group">
+            <label>メール</label>
+            <input type="text" name="mail" class="search form-control" />
+          </div>
+          <div class="form-group">
+            <label>住所</label>
+            <input type="text" name="address1" class="search form-control" />
+          </div>
+          <div class="form-group">
+            <label>年齢</label>
+            <input type="number" name="age" class="search form-control" />
+          </div>
         </div>
-        <div class="form-group">
-          <label>名前（カナ）</label>
-          <input type="text" name="name_kana" class="search form-control" />
-        </div>
-        <div class="form-group">
-          <label>メール</label>
-          <input type="text" name="mail" class="search form-control" />
-        </div>
-        <div class="form-group">
-          <label>住所</label>
-          <input type="text" name="address1" class="search form-control" />
-        </div>
-        <div class="form-group">
-          <label>年齢</label>
-          <input type="number" name="age" class="search form-control" />
-        </div>
-        <div class="form-group">
-          <label>1ページの件数</label>
-          <input name="per" type="number" min="10" max="500" step="5" class="search form-control" />
-        </div>
-        <div class="form-group">
-          <label>ページ数</label>
-          <input name="page" type="number" min="1" class="search form-control" />
-        </div>
-      </div>
-      <div class="col-md-1"></div>
-    </form>
+        <div class="col-md-1"></div>
+      </form>
+    </div>
+    <div class="col-md-12">
+      <nav class="pull-right">
+        <select name="per" class="form-control search" id="per-page">
+          <option value="25">25件</option>
+          <option value="50">50件</option>
+          <option value="100">100件</option>
+          <option value="200">200件</option>
+        </select>
+        <ul class="pagination">
+          <li>
+            <a href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li>
+            <a href="#" aria-label="Next">
+              <span aria=hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
     <table class="table table-striped">
       <thead>
         <tr>
