@@ -2,7 +2,7 @@ $(document).ready(function(){
   var search = function(params){
     $.ajax({
       type: 'GET',
-      url: 'http://54.199.159.194:3000/addresses.json',
+      url: 'http://54.199.208.34:3000/addresses.json',
       data: params,
       dataType: 'json',
       success: function(response){
