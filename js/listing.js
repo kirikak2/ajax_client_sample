@@ -1,7 +1,7 @@
 $(document).ready(function(){
   $.ajax({
     type: 'GET',
-    url: 'http://54.199.159.194:3000/addresses.json',
+    url: 'http://54.199.208.34:3000/addresses.json',
     dataType: 'json',
     success: function(response){
       var data = $("#data");
