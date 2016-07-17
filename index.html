@@ -2,36 +2,12 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-    <script src="js/listing.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.2.1/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.2.1/react-dom.js"></script>.
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+    <script type="text/babel" src="js/listing.js"></script>
   </head>
   <body>
-    <label>名前<input type="text" name="name" class="search" /></label>
-    <label>名前（カナ）<input type="text" name="name_kana" class="search" /></label>
-    <label>メール<input type="text" name="mail" class="search" /></label>
-    <label>住所<input type="text" name="address1" class="search" /></label>
-    <label>年齢<input type="number" name="age" class="search" /></label>
-    <label>1ページの件数<input name="per" type="number" min="10" max="500" step="5" class="search" /></label>
-    <label>ページ数<input name="page" type="number" min="1" class="search" /></label>
-    <table>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>名前</th>
-          <th>名前（カタカナ）</th>
-          <th>性別</th>
-          <th>携帯電話</th>
-          <th>メールアドレス</th>
-          <th>郵便番号</th>
-          <th>住所1</th>
-          <th>住所2</th>
-          <th>住所3</th>
-          <th>住所4</th>
-          <th>住所5</th>
-          <th>年齢</th>
-        </tr>
-      </thead>
-      <tbody id="data">
-      </tbody>
-    </table>
+    <div id="content"></div>
   </body>
 </html>
