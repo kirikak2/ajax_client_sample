@@ -4,8 +4,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="js/list_controller.js"></script>
   </head>
-  <body>
-    <table ng-controller="ListController" ng-init="search()">
+  <body ng-controller="ListController" ng-init="search()">
+    <label>名前<input type="text" name="name" ng-model="searchParams['name']" ng-keyup="search()" /></label>
+    <label>名前（カナ）<input type="text" name="name_kana" ng-model="searchParams['name_kana']" ng-keyup="search()" /></label>
+    <label>メール<input type="text" name="mail" ng-model="searchParams['mail']" ng-keyup="search()" /></label>
+    <label>住所<input type="text" name="address1" ng-model="searchParams['address1']" ng-keyup="search()" /></label>
+    <label>年齢<input type="number" name="age" ng-model="searchParams['age']" ng-keyup="search()" /></label>
+    <label>1ページの件数<input name="per" type="number" min="10" max="500" step="5" ng-model="searchParams['per']" ng-keyup="search()" ng-change="search()" /></label>
+    <label>ページ数<input name="page" type="number" min="1" ng-model="searchParams['page']" ng-keyup="search()" ng-change="search()" /></label>
+    <table>
       <thead>
         <tr>
           <th>#</th>
