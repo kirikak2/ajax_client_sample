@@ -1,18 +1,63 @@
 <html ng-app="ajaxSample">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script
+    src="https://code.jquery.com/jquery-2.2.4.min.js"
+    integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+    crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script src="js/list_controller.js"></script>
   </head>
-  <body ng-controller="ListController" ng-init="search()">
-    <label>名前<input type="text" name="name" ng-model="searchParams['name']" ng-keyup="search()" /></label>
-    <label>名前（カナ）<input type="text" name="name_kana" ng-model="searchParams['name_kana']" ng-keyup="search()" /></label>
-    <label>メール<input type="text" name="mail" ng-model="searchParams['mail']" ng-keyup="search()" /></label>
-    <label>住所<input type="text" name="address1" ng-model="searchParams['address1']" ng-keyup="search()" /></label>
-    <label>年齢<input type="number" name="age" ng-model="searchParams['age']" ng-keyup="search()" /></label>
-    <label>1ページの件数<input name="per" type="number" min="10" max="500" step="5" ng-model="searchParams['per']" ng-keyup="search()" ng-change="search()" /></label>
-    <label>ページ数<input name="page" type="number" min="1" ng-model="searchParams['page']" ng-keyup="search()" ng-change="search()" /></label>
-    <table>
+  <body ng-controller="ListController" ng-init="init()">
+    <form>
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <div class="form-group">
+          <label>名前</label>
+          <input type="text" name="name" class="search form-control" ng-model="searchParams['name']" ng-keyup="changeParams()" />
+        </div>
+        <div class="form-group">
+          <label>名前（カナ）</label>
+          <input type="text" name="name_kana" class="search form-control" ng-model="searchParams['name_kana']" ng-keyup="changeParams()" />
+        </div>
+        <div class="form-group">
+          <label>メール</label>
+          <input type="text" name="mail" class="search form-control" ng-model="searchParams['mail']" ng-keyup="changeParams()" />
+        </div>
+        <div class="form-group">
+          <label>住所</label>
+          <input type="text" name="address1" class="search form-control" ng-model="searchParams['address1']" ng-keyup="changeParams()" />
+        </div>
+        <div class="form-group">
+          <label>年齢</label>
+          <input type="number" name="age" class="search form-control" ng-model="searchParams['age']" ng-keyup="changeParams()" />
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+    </form>
+    <div class"col-md-12">
+      <nav class="pull-right">
+        <select name="per" class="form-control search" ng-model="perOption" ng-change="changeParams()" ng-options="p.name for p in perOptions">
+        </select>
+        <ul class="pagination">
+          <li ng-class="{disabled: !canPaginationPrev()}" >
+            <a href="#" aria-label="Previous" ng-click="paginationPrev()">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li ng-repeat="r in paginationPageRange()" ng-click="paginationClick(r)" ng-class="{active: isPaginationActive(r)}"><a href="#">{{r}}</a></li>
+          <li ng-class="{disabled: !canPaginationNext()}">
+            <a href="#" aria-label="Next" ng-click="paginationNext()">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <table class="table table-striped">
       <thead>
         <tr>
           <th>#</th>
