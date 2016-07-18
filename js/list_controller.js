@@ -23,7 +23,7 @@ app.controller("ListController", ['$scope', '$http', function($scope, $http){
       params: $scope.searchParams,
     }).success(function(data, status, headers, config) {
       $scope.calc(data);
-    })
+    });
   };
 
   $scope.calc = function(data) {
@@ -99,5 +99,63 @@ app.controller("ListController", ['$scope', '$http', function($scope, $http){
   $scope.paginationClick = function(page){
     $scope.searchParams["page"] = page;
     $scope.search();
+  }
+
+  $scope.dataCreateInit = function() {
+    $scope.record = {};
+  }
+
+  $scope.dataCreate = function() {
+    $http({
+      method: 'POST',
+      url: 'http://54.199.208.34:3000/addresses.json',
+      data: {data: JSON.stringify($scope.record) }
+    }).success(function(data, status, headers, config) {
+      $scope.search();
+      $("#create").modal('hide');
+    });
+  }
+
+  $scope.dataDeleteInit = function(record) {
+    $scope.record = record;
+  }
+
+  $scope.dataDelete = function(record) {
+    $http({
+      method: 'DELETE',
+      url: 'http://54.199.208.34:3000/addresses/' + record.id + '.json'
+    }).success(function(data, status, headers, config) {
+      $scope.search();
+      $("#delete").modal('hide');
+    });
+  }
+
+  $scope.dataUpdateInit = function(record) {
+    $scope.record = record;
+  }
+
+  $scope.dataUpdate = function(record) {
+    var new_record = {
+      name: record.name,
+      name_kana: record.name_kana,
+      gender: record.gender,
+      phone: record.phone,
+      mail: record.mail,
+      zipcode: record.zipcode,
+      address1: record.address1,
+      address2: record.address2,
+      address3: record.address3,
+      address4: record.address4,
+      address5: record.address5,
+      age: record.age
+    }
+    $http({
+      method: 'PUT',
+      url: 'http://54.199.208.34:3000/addresses/' + record.id + '.json',
+      data: {data: JSON.stringify(new_record) }
+    }).success(function(data, status, headers, config) {
+      $scope.search();
+      $("#update").modal('hide');
+    });
   }
 }]);

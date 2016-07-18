@@ -12,6 +12,156 @@
     <script src="js/list_controller.js"></script>
   </head>
   <body ng-controller="ListController" ng-init="init()">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create" ng-click="dataCreateInit()">
+      レコードの作成
+    </button>
+    <div class="modal fade" id="create" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">新規レコードの作成</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label>名前</label>
+              <input type="text" name="name" class="form-control" ng-model="record['name']" />
+            </div>
+            <div class="form-group">
+              <label>名前（カナ）</label>
+              <input type="text" name="name_kana" class="form-control" ng-model="record['name_kana']" />
+            </div>
+            <div class="form-group">
+              <label>性別</label>
+              <input type="text" name="gender" class="form-control" ng-model="record['gender']" />
+            </div>
+            <div class="form-group">
+              <label>携帯電話</label>
+              <input type="text" name="phone" class="form-control" ng-model="record['phone']" />
+            </div>
+            <div class="form-group">
+              <label>メール</label>
+              <input type="text" name="mail" class="form-control" ng-model="record['mail']" />
+            </div>
+            <div class="form-group">
+              <label>郵便番号</label>
+              <input type="text" name="zipcode" class="form-control" ng-model="record['zipcode']" />
+            </div>
+            <div class="form-group">
+              <label>住所1</label>
+              <input type="text" name="address1" class="form-control" ng-model="record['address1']" />
+            </div>
+            <div class="form-group">
+              <label>住所2</label>
+              <input type="text" name="address2" class="form-control" ng-model="record['address2']" />
+            </div>
+            <div class="form-group">
+              <label>住所3</label>
+              <input type="text" name="address3" class="form-control" ng-model="record['address3']" />
+            </div>
+            <div class="form-group">
+              <label>住所4</label>
+              <input type="text" name="address4" class="form-control" ng-model="record['address4']" />
+            </div>
+            <div class="form-group">
+              <label>住所5</label>
+              <input type="text" name="address5" class="form-control" ng-model="record['address5']" />
+            </div>
+            <div class="form-group">
+              <label>年齢</label>
+              <input type="text" name="age" class="form-control" ng-model="record['age']" />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+            <button type="button" class="btn btn-primary" ng-click="dataCreate()">保存</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="update" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">レコードの更新</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label>名前</label>
+              <input type="text" name="name" class="form-control" ng-model="record['name']" />
+            </div>
+            <div class="form-group">
+              <label>名前（カナ）</label>
+              <input type="text" name="name_kana" class="form-control" ng-model="record['name_kana']" />
+            </div>
+            <div class="form-group">
+              <label>性別</label>
+              <input type="text" name="gender" class="form-control" ng-model="record['gender']" />
+            </div>
+            <div class="form-group">
+              <label>携帯電話</label>
+              <input type="text" name="phone" class="form-control" ng-model="record['phone']" />
+            </div>
+            <div class="form-group">
+              <label>メール</label>
+              <input type="text" name="mail" class="form-control" ng-model="record['mail']" />
+            </div>
+            <div class="form-group">
+              <label>郵便番号</label>
+              <input type="text" name="zipcode" class="form-control" ng-model="record['zipcode']" />
+            </div>
+            <div class="form-group">
+              <label>住所1</label>
+              <input type="text" name="address1" class="form-control" ng-model="record['address1']" />
+            </div>
+            <div class="form-group">
+              <label>住所2</label>
+              <input type="text" name="address2" class="form-control" ng-model="record['address2']" />
+            </div>
+            <div class="form-group">
+              <label>住所3</label>
+              <input type="text" name="address3" class="form-control" ng-model="record['address3']" />
+            </div>
+            <div class="form-group">
+              <label>住所4</label>
+              <input type="text" name="address4" class="form-control" ng-model="record['address4']" />
+            </div>
+            <div class="form-group">
+              <label>住所5</label>
+              <input type="text" name="address5" class="form-control" ng-model="record['address5']" />
+            </div>
+            <div class="form-group">
+              <label>年齢</label>
+              <input type="text" name="age" class="form-control" ng-model="record['age']" />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+            <button type="button" class="btn btn-primary" ng-click="dataUpdate(record)">更新</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">削除の確認</h4>
+          </div>
+          <div class="modal-body">
+            #{{record["id"]}}:{{record["name"]}}を削除しますか？
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-danger" ng-click="dataDelete(record)">削除</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <form>
       <div class="col-md-1"></div>
       <div class="col-md-10">
@@ -73,6 +223,7 @@
           <th>住所4</th>
           <th>住所5</th>
           <th>年齢</th>
+          <th>操作</th>
         </tr>
       </thead>
       <tbody id="data">
@@ -90,6 +241,14 @@
           <td>{{result["address4"]}}</td>
           <td>{{result["address5"]}}</td>
           <td>{{result["age"]}}</td>
+          <td>
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#update" ng-click="dataUpdateInit(result)">
+              更新
+            </button>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete" ng-click="dataDeleteInit(result)">
+              削除
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
