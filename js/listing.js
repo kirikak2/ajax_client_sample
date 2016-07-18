@@ -1,6 +1,6 @@
 var NumberCondition = React.createClass({
   onKeyUp: function(e) {
-    var conditions = this.state.conditions;
+    var conditions = this.props.conditions;
     conditions[this.props.target] = e.target.value;
     this.props.search();
   },
