@@ -19,7 +19,7 @@ app.controller("ListController", ['$scope', '$http', function($scope, $http){
     $scope.searchParams["per"] = $scope.perOption.value;
     $http({
       method: 'GET',
-      url: 'http://54.199.208.34:3000/addresses.json',
+      url: 'http://13.114.92.225:3000/addresses.json',
       params: $scope.searchParams,
     }).success(function(data, status, headers, config) {
       $scope.calc(data);
@@ -108,7 +108,7 @@ app.controller("ListController", ['$scope', '$http', function($scope, $http){
   $scope.dataCreate = function() {
     $http({
       method: 'POST',
-      url: 'http://54.199.208.34:3000/addresses.json',
+      url: 'http://13.114.92.225:3000/addresses.json',
       data: {data: JSON.stringify($scope.record) }
     }).success(function(data, status, headers, config) {
       $scope.search();
@@ -123,7 +123,7 @@ app.controller("ListController", ['$scope', '$http', function($scope, $http){
   $scope.dataDelete = function(record) {
     $http({
       method: 'DELETE',
-      url: 'http://54.199.208.34:3000/addresses/' + record.id + '.json'
+      url: 'http://13.114.92.225:3000/addresses/' + record.id + '.json'
     }).success(function(data, status, headers, config) {
       $scope.search();
       $("#delete").modal('hide');
@@ -151,7 +151,7 @@ app.controller("ListController", ['$scope', '$http', function($scope, $http){
     }
     $http({
       method: 'PUT',
-      url: 'http://54.199.208.34:3000/addresses/' + record.id + '.json',
+      url: 'http://13.114.92.225:3000/addresses/' + record.id + '.json',
       data: {data: JSON.stringify(new_record) }
     }).success(function(data, status, headers, config) {
       $scope.search();
